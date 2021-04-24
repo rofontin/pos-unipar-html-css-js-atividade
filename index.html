@@ -31,8 +31,14 @@
     </nav>
     <main>
         <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-4">
+            <div id="dropzone" class="row" style="padding: 10px;" 
+                ondrop="drop(event)" ondragover="allowDrop(event)" ondragleave="leave(event)">
+                
+            </div>
+
+            <div id="dropzone" class="row" style="padding: 10px;" 
+                ondrop="drop(event)" ondragover="allowDrop(event)" ondragleave="leave(event)">
+                <div id="noticia1" class="col-lg-4" draggable="true" ondragstart="drag(event)" ondragover="denyDrop(event)">
                     <article>
                         <header>
                             <h1>Facebook bloqueia conta de Nicolás Maduro após vídeo que viola política de desinformação
@@ -55,7 +61,7 @@
                         </nav>
                     </article>
                 </div>
-                <div class="col-lg-4">
+                <div id="noticia2" class="col-lg-4" draggable="true" ondragstart="drag(event)" ondragover="denyDrop(event)">
                     <article>
                         <header>
                             <h1>Aos 12 anos, menina monta escola durante a pandemia e dá aulas para crianças do Maranhão
@@ -78,7 +84,7 @@
                         </nav>
                     </article>
                 </div>
-                <div class="col-lg-4">
+                <div id="noticia3" class="col-lg-4" draggable="true" ondragstart="drag(event)" ondragover="denyDrop(event)">
                     <article>
                         <header>
                             <h1>Homem suspeito de agredir namorada e amigo dela é preso escondido em galinheiro em MT
@@ -119,6 +125,36 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js"
         integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc"
         crossorigin="anonymous"></script>
+
+        <script>
+            function allowDrop(ev) {
+              ev.preventDefault();
+              ev.target.style.border = "3px dotted #ccc";
+              ev.target.style.background = "#eee";
+            }
+
+            function denyDrop(ev) {
+              ev.stopPropagation();
+            }
+            
+            function drag(ev) {
+              ev.dataTransfer.setData("text", ev.target.id);
+            }
+
+            function leave(ev){
+                ev.preventDefault();
+                ev.target.style.border = "none";
+                ev.target.style.background = "inherit";
+            }
+            
+            function drop(ev) {
+              ev.preventDefault();
+              var data = ev.dataTransfer.getData("text");
+              ev.target.appendChild(document.getElementById(data));
+              ev.target.style.border = "none";
+              ev.target.style.background = "inherit";
+            }
+            </script>
 </body>
 
 </html>

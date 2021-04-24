@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+    <main>
+        <header id="page-header">
+            <h1>Exemplo uso HTML5, CSS3</h1>
+        </header>
+        <nav id="main-menu">
+            <a href="index.html" class="link">Inicial</a>
+            <a href="contato.html" class="link">Contato</a>
+        </nav>
+        <div>
+            <section>
+                <form id="form-noticias">
+                    <div id="contato">
+                        <div id="inputTitle">
+                            <label><b>Título:</b></label><br>
+                            <input type="text" name="titulo" value="" placeholder="Informe o Título" autofocus>
+                        </div>
+                        <br>
+                        <div id="inputColor">
+                            <label><b>Cor do Título: </b></label><input type="color" name="color" value="#ff0000">
+                        </div>
+                        <br>
+                        <div id="inputDate">
+                            <label><b>Data:</b></label><br>
+                            <input type="date" name="date" value="">
+                        </div>
+                        <br>
+                        <div id="inputEmail">
+                            <label><b>E-mail:</b></label><br>
+                            <input type="email" name="email" value="" placeholder="exemplo@exemplo.com">
+                        </div>
+                        <br>
+                        <div id="inputIntroducao">
+                            <label><b>Introdução</b></label><br>
+                            <textarea name="introducao" rows="8" cols="35"></textarea>
+                        </div>
+                        <br>
+                        <div id="inputImagem">
+                            <div>
+                                <label for="imagem"><b>Imagem:</b></label>    
+                            </div>
+                            <input type="file" id="imagem" name="imagem">
+                        </div>
+                        <br>
+                        <div id="inputAdress">  
+                            <label><b>Endereço de origem (URL):</b></label><br>
+                            <input type="url" name="url" value="" placeholder="Informe a URL">
+                        </div>
+                        <br>
+                        <div id="buttonEnviar">
+                            <a href="#"><input type="submit" name="enviar" value="Enviar"></a>
+                        </div> 
+                    </div>
+                </form>
+            </section>
+            
+            <section>
+                <table id="table-noticias" class="table">
+                    <thead>
+                        <tr>
+                            <th>Título</th>
+                            <th>Introdução</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="2">Total de registros <span>0</span></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </section>
+
+        </div>
+    </main>
+    
+    <footer id="page-footer">
+        <div>
+            <strong>Riquelmy Fontin - Pós-Graduação em Desenvolvimento de Aplicações Web e Mobile</strong>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+        crossorigin="anonymous"></script>
+
+    <script src="js/app.js"></script>
+    
+</body>
+</html>
