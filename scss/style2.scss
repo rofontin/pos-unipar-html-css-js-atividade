@@ -1,0 +1,167 @@
+
+$primary-color: coral;
+$secondary-color: darkslateblue;
+
+$body-color: darkslategrey;
+
+$boder-style: 1px #ccc solid;
+
+@mixin padding-default($width) {
+    padding: #{$width}px #{$width*2}px;
+}
+
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Roboto";
+    color: $body-color;
+}
+
+#page-header {
+    background-color: $secondary-color;
+    @include padding-default(20);
+    color: $primary-color;
+}
+
+#page-footer {
+    background-color: $primary-color;
+    color: $secondary-color;
+    @include padding-default(20);
+    overflow: hidden;
+
+    div {
+        display: inline;
+
+        &:last-child {
+            float: right;
+        }
+    }
+}
+
+.fundo-gradiente {
+    background-image: linear-gradient(lighten($primary-color, 20%), $primary-color);
+}
+
+#main-menu {
+    text-transform: lowercase;
+    padding: 0 40px;
+    display: flex;
+    background-color: $primary-color;
+    text-align: center;
+    text-shadow: 2px 1px darken($primary-color, 30%);
+
+    a {          
+        padding: 20px;
+        width: 100px;
+        font-weight: 600;
+
+        &:hover {
+            background-color: rgb(230, 110, 67);
+        }
+    }
+}
+
+#news {
+    margin: 10px 20px;
+    overflow: hidden;
+
+    article {
+        background-color: antiquewhite;
+        padding: 20px;
+        float: left;
+        width: 33.33%;
+
+        &:nth-child(2) {
+            border-left: $boder-style;
+            border-right: $boder-style;
+        }
+
+        img {
+            float: right;
+            height: 48px;
+            margin: 10px;
+        }
+    }
+}
+
+#contato {
+    background-color: antiquewhite;
+    width: 50%;
+    margin: auto;
+    padding: 10px 20px;
+    overflow: hidden;
+
+    label {
+        width: 25%;
+        text-align: right;
+        float: left;
+        height: 40px;
+        padding: 10px;
+    }
+
+    input {
+        height: 40px;
+    }
+
+    input, textarea  {
+        width: 75%;
+        float: left;
+        margin-bottom: 5px;
+    }
+
+    input[type=submit]{
+        float: right;
+    }
+
+    br {
+        clear: both;
+        content: "";
+        display: table;
+    }
+}
+
+a, a:link, a:visited, a:active {
+    color: inherit;
+    text-decoration: none;
+}
+
+
+@media screen and (max-width: 800px) {
+
+    #news article {
+        width: 50%;
+    }
+
+    #news article:nth-child(2) {
+        border-right: none;
+    }
+
+    #contato {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+
+    #news article {
+        width: 100%;
+    }
+
+    #news article:nth-child(2) {
+        border: none;
+    }
+
+    #contato label {
+        width: 100%;
+        text-align: left;
+    }
+    
+    #contato input, textarea     {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+
+}

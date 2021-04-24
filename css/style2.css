@@ -1,0 +1,137 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto";
+  color: darkslategrey;
+}
+
+#page-header {
+  background-color: darkslateblue;
+  padding: 20px 40px;
+  color: coral;
+}
+
+#page-footer {
+  background-color: coral;
+  color: darkslateblue;
+  padding: 20px 40px;
+  overflow: hidden;
+}
+#page-footer div {
+  display: inline;
+}
+#page-footer div:last-child {
+  float: right;
+}
+
+.fundo-gradiente {
+  background-image: linear-gradient(#ffcab6, coral);
+}
+
+#main-menu {
+  text-transform: lowercase;
+  padding: 0 40px;
+  display: flex;
+  background-color: coral;
+  text-align: center;
+  text-shadow: 2px 1px #b63100;
+}
+#main-menu a {
+  padding: 20px;
+  width: 100px;
+  font-weight: 600;
+}
+#main-menu a:hover {
+  background-color: #e66e43;
+}
+
+#news {
+  margin: 10px 20px;
+  overflow: hidden;
+}
+#news article {
+  background-color: antiquewhite;
+  padding: 20px;
+  float: left;
+  width: 33.33%;
+}
+#news article:nth-child(2) {
+  border-left: 1px #ccc solid;
+  border-right: 1px #ccc solid;
+}
+#news article img {
+  float: right;
+  height: 48px;
+  margin: 10px;
+}
+
+#contato {
+  background-color: antiquewhite;
+  width: 50%;
+  margin: auto;
+  padding: 10px 20px;
+  overflow: hidden;
+}
+#contato label {
+  width: 25%;
+  text-align: right;
+  float: left;
+  height: 40px;
+  padding: 10px;
+}
+#contato input {
+  height: 40px;
+}
+#contato input, #contato textarea {
+  width: 75%;
+  float: left;
+  margin-bottom: 5px;
+}
+#contato input[type=submit] {
+  float: right;
+}
+#contato br {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+a, a:link, a:visited, a:active {
+  color: inherit;
+  text-decoration: none;
+}
+
+@media screen and (max-width: 800px) {
+  #news article {
+    width: 50%;
+  }
+
+  #news article:nth-child(2) {
+    border-right: none;
+  }
+
+  #contato {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 600px) {
+  #news article {
+    width: 100%;
+  }
+
+  #news article:nth-child(2) {
+    border: none;
+  }
+
+  #contato label {
+    width: 100%;
+    text-align: left;
+  }
+
+  #contato input, textarea {
+    width: 100%;
+    margin-bottom: 5px;
+  }
+}/*# sourceMappingURL=style2.css.map */
