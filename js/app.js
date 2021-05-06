@@ -1,34 +1,57 @@
-$(document).ready(function (){
+
+$(document).ready(() => {
+
+    const exemplosArray = () => {
+
+        let array = [10, 7, 20, 5];
+        console.log("array " + array);
+
+        let total = array.reduce((x, value) => x += value);
+        console.log("reduce " + total);
+
+        let mult = (value) => value * 2;
+
+        var arrayMap = array.map(mult);
+        console.log("arrayMap " + arrayMap);
+
+        var arrayFilter = array.filter((value) => value % 2 == 0);
+        console.log("arrayFilter " + arrayFilter);
+
+        const pares = (value) => value % 2 == 0;
+
+        console.log("direto " + array.filter(pares).map(mult));
+    }
+
+    exemplosArray();
 
     var formNoticias = $("#form-noticias");
-    formNoticias.on("submit", function(){
+    formNoticias.on("submit", () => {
         try {
             var json = recordFromForm(formNoticias);
-            saveData(json);
+            saveRecord(json);
             addDataTable(json);
-        } catch (e){
+        } catch (e) {
             console.error(e);
         }
         return false;
     });
 
-    function recordFromForm(form){
+    const recordFromForm = (form) => {
         var inputs = form.find('input[type="text"], textarea');
         var json = "";
-        inputs.each(function(idx, input){
+        inputs.each(function (idx, input) {
             var name = $(input).attr("name");
             var value = $(input).val();
             if (json !== "")
                 json += ",";
-            
-            json += `"${name}": "${ value.trim() }"`;
-            console.log(json);
+
+            json += `"${name}": "${value.trim()}"`;
         });
         json = `{${json}}`;
         return JSON.parse(json);
     }
 
-    function addDataTable(noticiajson){
+    const addDataTable = (noticiajson) => {
         var tbody = $("#table-noticias tbody");
         var tr = $("<tr></tr>");
         var tdTitulo = $("<td></td>");
@@ -38,14 +61,11 @@ $(document).ready(function (){
         tdIntroducao.text(noticiajson['introducao']);
 
         var remover = $('<a></a>');
-        remover.text("Remover");
+        remover.html('<i class="bi-trash"></i> Remover');
         remover.addClass("btn btn-sm btn-danger");
         tdAcoes.append(remover);
 
-        remover.click(function(){
-            tr.remove();
-            showRowCount();
-        });
+        remover.on("click", () => removeRow(tr));
 
         tr.append(tdTitulo, tdIntroducao, tdAcoes);
         tbody.append(tr);
@@ -53,32 +73,48 @@ $(document).ready(function (){
         showRowCount();
     }
 
-    function showRowCount(){
-        var total = $("#table-noticias tbody tr").length;
+    const removeRow = (tr) => {
+        let idx = tr.index();
 
-        $("#table-noticias tfoot tr td span").text(total);
+        tr.remove();
+        showRowCount();
+
+        let data = loadData();
+        if (data.length > 0) {
+            data.splice(idx, 1);
+            saveData(data);
+        }
     }
 
+    const showRowCount = () => $("#table-noticias tfoot tr td span").text(countRow());
+
+    const countRow = () => $("#table-noticias tbody tr").length;
+
     const STORAGE_NAME = "news";
-    const saveData = (record) => {
+
+    const saveRecord = (record) => {
         let data = loadData();
         data.push(record);
+        saveData(data);
+    }
+
+    const saveData = (data) => {
         data = JSON.stringify(data);
         localStorage.setItem(STORAGE_NAME, data);
-    };
+    }
 
     const loadData = () => {
         let data = localStorage.getItem(STORAGE_NAME);
-        if(!data)
-            data = [];
+        if (!data)
+            data = []
         else
-            data = JSON.parse(data)
+            data = JSON.parse(data);
         return data;
-    };
+    }
 
-    const loadTable = () =>{
+    const loadTable = () => {
         let data = loadData();
-        for (json of data){
+        for (json of data) {
             addDataTable(json);
         }
     }
